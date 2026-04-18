@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+:root,
+[data-theme='light'] {
+  --color-bg: #f7f6f2;
+  --color-surface: #f9f8f5;
+  --color-text: #28251d;
+  --color-muted: #6b685f;
+  --color-border: rgba(40, 37, 29, 0.08);
+  --color-primary: #01696f;
+  --color-primary-hover: #0c4e54;
+  --shadow-warm: 0 12px 40px -12px rgba(40, 37, 29, 0.12),
+    0 4px 16px -4px rgba(40, 37, 29, 0.08);
+  --tint-green: rgba(1, 105, 111, 0.08);
+  --tint-blue: rgba(59, 130, 246, 0.1);
+  --tint-warm: rgba(217, 119, 6, 0.1);
+  --tint-teal-soft: rgba(1, 105, 111, 0.06);
+}
+
+[data-theme='dark'] {
+  --color-bg: #141311;
+  --color-surface: #1c1a17;
+  --color-text: #f2efe8;
+  --color-muted: #a39e94;
+  --color-border: rgba(242, 239, 232, 0.1);
+  --shadow-warm: 0 12px 40px -12px rgba(0, 0, 0, 0.45),
+    0 4px 16px -4px rgba(0, 0, 0, 0.35);
+  --tint-green: rgba(52, 211, 153, 0.12);
+  --tint-blue: rgba(96, 165, 250, 0.14);
+  --tint-warm: rgba(251, 191, 36, 0.12);
+  --tint-teal-soft: rgba(45, 212, 191, 0.08);
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: max(16px, 0.95rem);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* KPI number smooth updates */
+.kpi-value {
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.35s ease;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-value--tick {
+  animation: kpiTick 0.5s ease;
+}
+
+@keyframes kpiTick {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
